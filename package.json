@@ -26,5 +26,12 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "@types/pg": "^8.15.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.2"
   }
 }

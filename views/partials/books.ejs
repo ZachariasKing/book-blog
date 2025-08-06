@@ -1,0 +1,14 @@
+<% if (books && books.length > 0) { %>
+    <ul>
+        <% books.forEach(book => { %>
+            <li>
+                <h2><%= book.title %></h2>
+                <p>Author(s): <%= book.authors.map(author => author.name).join(', ') %></p>
+                <p>Publication Date: <%= book.publicationDate.toDateString() %></p>
+                <p>ISBN: <%= book.ISBN %></p>
+            </li>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <p>No books found.</p>
+<% } %>
