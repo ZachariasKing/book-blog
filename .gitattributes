@@ -1,0 +1,5 @@
+# This file is used to define attributes for paths in the repository.
+
+# This helps Git manage line endings automatically in case of collaborating across different operating systems.
+# Set text files to have LF line endings in the repository, but convert to CRLF on checkout on Windows.
+* text=auto
