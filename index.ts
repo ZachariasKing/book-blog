@@ -4,6 +4,7 @@ import pg from 'pg';
 import { Book } from './db/pg/Book';
 import { BookDb } from './db/BookDb';
 import { title } from 'process';
+import ApiClient from './Utilities/ApiClient';
 
 
 //Express server setup

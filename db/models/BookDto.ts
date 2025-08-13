@@ -11,4 +11,5 @@ export type BookDto = {
   authors?: AuthorDto[];
   genres?: GenreDto[];
   publisher?: PublisherDto;
+  coverImageUrl?: string; // Optional field for cover image URL
 };

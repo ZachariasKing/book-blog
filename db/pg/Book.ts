@@ -65,8 +65,13 @@ export class Book {
   // It uses a JOIN query to combine data from the books and authors tables.
   public async getAllBooksWithAuthors(): Promise<BookDto[]> {
   const res = await this.pool.query(
-    `SELECT b.id, b.title, b.publication_date, b.isbn,
-            a.id, a.name
+    `SELECT 
+        b.id AS book_id, 
+        b.title, 
+        b.publication_date, 
+        b.isbn,
+        a.id AS author_id, 
+        a.name
      FROM book b
      JOIN author_book ab ON b.id = ab.book_id
      JOIN author a ON ab.author_id = a.id`
@@ -85,7 +90,7 @@ export class Book {
         authors: []
       });
     }
-    booksMap.get(row.book_id)!.authors!.push({
+    booksMap.get(row.book_id)!.authors.push({
       authorId: row.author_id,
       name: row.name
     } as AuthorDto);
