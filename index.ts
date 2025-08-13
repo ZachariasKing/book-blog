@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import pg from 'pg';
-import { Book } from './db/pg/Book.js';
+import { Book } from './db/pg/Book';
 import { BookDb } from './db/BookDb';
 import { title } from 'process';
 
@@ -30,12 +30,15 @@ pool.on('error', (err) => {
 
 export const book: BookDb = new Book(pool);
 
-try {
-  const client = await pool.connect();
-} catch (err) {
-  console.error('Error connecting to the database', err);
-  process.exit(-1);
-}
+(async () => {
+  try {
+    const client = await pool.connect();
+    client.release();
+  } catch (err) {
+    console.error('Error connecting to the database', err);
+    process.exit(-1);
+  }
+})();
 
 //Endpoints
 app.get('/', (req, res) => {

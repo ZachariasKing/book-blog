@@ -1,3 +1,6 @@
+# Ignore folder for this project
+/.ignore
+
 # Logs
 logs
 *.log
