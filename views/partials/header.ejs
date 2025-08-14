@@ -1,8 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
     <title><%= title %></title>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- Theme Switcher TODO: Add text indicating theme switch -->
+    <header>
+      <div class="container">
+        <div class="navbar">
+          <h2 class="nav-title"><%= title %></h2>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="theme-toggle">
+            <span id="theme-toggle-text">Toggle Theme: </span>
+            <label class="switch">
+              <input id="themeToggle" type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

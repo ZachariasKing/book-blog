@@ -1,0 +1,245 @@
+/********** Font Imports ************/
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Merriweather+Sans:wght@400;700&display=swap");
+
+/********** Main Colors (dark and light theme) to theme web app ************/
+:root {
+  /* Light theme */
+  --bg: #faf9f6;
+  --text: #2e2e2e;
+  --nav-text: #f5f5f5;
+  --primary: #8b5e3c;
+  --secondary: #d4a373;
+  --card-bg: #fff4e6;
+  --highlight: #4a7c59;
+
+  /* RGBA versions */
+  --bg-rgba: rgba(250, 249, 246, 1);
+  --bg-rgba-light: rgba(250, 249, 246, 0.85);
+  --primary-rgba: rgba(139, 94, 60, 1);
+  --primary-rgba-light: rgba(139, 94, 60, 0.8);
+  --secondary-rgba: rgba(212, 163, 115, 1);
+  --secondary-rgba-light: rgba(212, 163, 115, 0.75);
+  --highlight-rgba: rgba(74, 124, 89, 1);
+  --highlight-rgba-light: rgba(74, 124, 89, 0.7);
+}
+
+/* Dark theme overrides */
+.dark-theme {
+  --bg: #1e1e1e;
+  --text: #f5f5f5;
+  --nav-text: #2e2e2e;
+  --primary: #d4a373;
+  --secondary: #8b5e3c;
+  --card-bg: #2a2a2a;
+  --highlight: #a3d9a5;
+
+  /* RGBA versions */
+  --bg-rgba: rgba(30, 30, 30, 1);
+  --bg-rgba-light: rgba(30, 30, 30, 0.85);
+  --primary-rgba: rgba(212, 163, 115, 1);
+  --primary-rgba-light: rgba(212, 163, 115, 0.8);
+  --secondary-rgba: rgba(139, 94, 60, 1);
+  --secondary-rgba-light: rgba(139, 94, 60, 0.75);
+  --highlight-rgba: rgba(163, 217, 165, 1);
+  --highlight-rgba-light: rgba(163, 217, 165, 0.7);
+}
+
+/********** General Styles ************/
+body {
+  font-family: "Merriweather Sans", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Merriweather", serif;
+}
+
+button {
+  background-color: var(--secondary);
+  color: white;
+}
+
+button:hover {
+  background-color: var(--highlight);
+}
+
+/********** Navbar Styling ************/
+.container {
+  background-color: var(--highlight);
+  height: 70px;
+}
+
+.nav-title {
+  color: var(--nav-text);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.container .navbar ul li {
+  padding: 10px;
+  margin: 0 10px;
+  list-style-type: none;
+}
+
+.navbar a {
+  color: var(--nav-text);
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: var(--secondary-rgba-light);
+}
+
+.navbar a:link {
+  text-decoration: none;
+}
+
+/********** Theme changer Slider Button ************/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#theme-toggle-text {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--nav-text);
+}
+
+.theme-toggle{
+  display: flex;
+  align-items: center;
+
+}
+
+/************* Main book list styling **************/
+.book-list {
+  list-style: none;
+  padding: 0;
+}
+
+.book-list li {
+  background-color: var(--card-bg);
+  border: 1px solid var(--primary-rgba-light);
+  border-radius: 8px;
+  margin: 12px 0;
+  padding: 12px;
+  transition: box-shadow 0.3s;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.book-title,
+.book-authors,
+.book-publication-date,
+.book-isbn {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.book-list li:hover {
+  box-shadow: 0 4px 12px var(--primary-rgba-light);
+}
+.book-cover-img {
+  max-width: 180px;
+  max-height: 250px;
+  margin-left: 24px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/************* Media Queries *************/
+@media screen and (min-width: 300px) and (max-width: 767px) {
+  .container {
+    height: 100%;
+  }
+
+  .container .navbar {
+    flex-direction: column;
+  }
+  
+}
