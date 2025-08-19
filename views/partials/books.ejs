@@ -1,47 +1,83 @@
 <p class="welcome-message">Welcome to the Book Blog!</p>
-<button id="open-modal-btn">Add New Book</button>
+<button class="submit-button" id="open-modal-btn">Add New Book</button>
 <% if (books && books.length > 0) { %>
-    <ul class="book-list">
-        <% books.forEach(book => { %>
-            <li class="li-book-item">
-                <div class="book-details">
-                    <h2 class="book-title"><%= book.title %></h2>
-                    <p class="book-authors">Author(s): <%= book.authors.map(author => author.name).join(', ') %></p>
-                    <p class="book-genre">Genre: <%= book.genres.map(genre => genre.name).join(', ') %></p>
-                    <p class="book-publication-date">Publication Date: <%= book.publicationDate.toDateString() %></p>
-                    <p class="book-isbn">ISBN: <%= book.ISBN %></p>
-                    <p class="book-feedback">My Thoughts: <br/><br/> <%= book.feedback %></p>
-                </div>
-                <img class="book-cover-img" src="<%= `https://covers.openlibrary.org/b/isbn/${book.ISBN}-M.jpg` %>" alt="<%= book.title %>">
-            </li>
-        <% }) %>
-    </ul>
+<ul class="book-list">
+  <% books.forEach(book => { %>
+  <li class="li-book-item">
+    <div class="book-details">
+      <h2 class="book-title"><%= book.title %></h2>
+      <p class="book-authors">
+        Author(s): <%= book.authors.map(author => author.name).join(', ') %>
+      </p>
+      <p class="book-genre">
+        Genre: <%= book.genres.map(genre => genre.name).join(', ') %>
+      </p>
+      <p class="book-publication-date">
+        Publication Date: <%= book.publicationDate.toDateString() %>
+      </p>
+      <p class="book-isbn">ISBN: <%= book.ISBN %></p>
+      <p class="book-feedback">
+        My Thoughts: <br /><br />
+        <%= book.feedback %>
+      </p>
+    </div>
+    <img
+      class="book-cover-img"
+      src="<%= `https://covers.openlibrary.org/b/isbn/${book.ISBN}-M.jpg` %>"
+      alt="<%= book.title %>"
+    />
+  </li>
+  <% }) %>
+</ul>
 <% } else { %>
-    <p>No books found.</p>
+<p>No books found.</p>
 <% } %>
 
-<div id="add-book-modal" class="modal" style="display:none;">
+<div id="add-book-modal" class="modal" style="display: none">
   <div class="modal-content">
     <span class="close" id="close-modal-btn">&times;</span>
     <h2>Add New Book</h2>
     <form id="add-book-form" method="POST" action="/books">
-      <label>Title: <input type="text" name="title" required></label><br>
-      <label>Genres (comma separated): <input type="text" name="genres" required></label><br>
-      <label>Authors (comma separated): <input type="text" name="authors" required></label><br>
-      <label>Publishers (comma separated): <input type="text" name="publishers" required></label><br>
-      <label>Publication Date: <input type="date" name="publicationDate" required></label><br>
-      <label>ISBN: <input type="text" name="ISBN" required></label><br>
-      <label>Feedback: <textarea name="feedback"></textarea></label><br>
-      <button type="submit">Add Book</button>
+      <label
+        >Title:
+        <input type="text" name="title" required />
+      </label>
+      <label
+        >Genres (comma separated):
+        <input type="text" name="genres" />
+      </label>
+      <label
+        >Authors (comma separated):
+        <input type="text" name="authors" required />
+      </label>
+      <label
+        >Publishers (comma separated):
+        <input type="text" name="publishers" />
+      </label>
+      <label
+        >Publication Date:
+        <input type="date" name="publicationDate" required />
+      </label>
+      <label
+        >ISBN:
+        <input type="text" name="ISBN" required />
+      </label>
+      <label class="full-width"
+        >Feedback:
+        <textarea name="feedback"></textarea>
+      </label>
+      <button type="submit" class="submit-button full-width">Add Book</button>
     </form>
-    <p id="form-error" style="color: red;"><%= locals.formError ? formError : '' %></p>
+    <p id="form-error" style="color: red">
+      <%= locals.formError ? formError : '' %>
+    </p>
   </div>
 </div>
 
 <% if (typeof showModal !== 'undefined' && showModal) { %>
 <script>
-  window.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('add-book-modal').style.display = 'flex';
+  window.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("add-book-modal").style.display = "flex";
   });
 </script>
 <% } %>

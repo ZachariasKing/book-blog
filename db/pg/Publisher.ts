@@ -45,7 +45,7 @@ export class Publisher {
       "INSERT INTO publisher (name) VALUES ($1) RETURNING *",
       [publisher.name]
     );
-    return result.rows[0];
+    return Publisher.mapPublisherResult(result)[0] as PublisherDto;
   }
 
   async addPublisherToBook(publisherId: number, bookId: number): Promise<void> {
@@ -72,6 +72,6 @@ export class Publisher {
   ): PublisherDto[] => // projection
     res.rows.map((r) => ({
       publisherId: r.id,
-      name: r.name,
+      name: r.name
     }));
 }
