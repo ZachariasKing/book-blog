@@ -75,7 +75,7 @@ app.post('/books', async (req, res) => {
 
   try {
     newBook = await book.addBook(bookData);
-
+    console.log("New book added:", newBook);
     // Add authors to the book
     for (const a of authors) {
       const authorFromData = await author.addAuthor(a);
@@ -87,14 +87,14 @@ app.post('/books', async (req, res) => {
     for (const g of genres) {
       const genreFromData = await genre.addGenre(g);
       console.log("Genre added:", genreFromData);
-      await genre.addGenreToBook(genreFromData.genreId, newBook.id);
+      await genre.addGenreToBook(genreFromData.genreId, newBook.bookId);
     }
 
     // Add publishers to the book
     for (const p of publishers) {
       const publisherFromData = await publisher.addPublisher(p);
       console.log("Publisher added:", publisherFromData);
-      await publisher.addPublisherToBook(publisherFromData.publisherId, newBook.id);
+      await publisher.addPublisherToBook(publisherFromData.publisherId, newBook.bookId);
     }
 
     // Book added successfully so redirect to main page

@@ -76,6 +76,8 @@ export class Book {
           'INSERT INTO book (title, publication_date, isbn, feedback) VALUES ($1, $2, $3, $4) RETURNING *',
           [book.title, book.publicationDate, book.ISBN, book.feedback]
         );
+        console.log('Book added successfully:', res.rows[0]);
+        console.log('Book data:', Book.mapBookResult(res)[0]);
         return Book.mapBookResult(res)[0] as BookDto;
       } else {
         throw new Error('Book with this title already exists');
@@ -162,7 +164,7 @@ public async checkBookTitleExists(bookTitle: string): Promise<boolean> {
   private static mapBookResult = (
     res: QueryResult): BookDto[] => // projection
     res.rows.map((r) => ({
-      bookId: r.book_id,
+      bookId: r.id,
       title: r.title,
       publicationDate: r.publication_date,
       ISBN: r.isbn,

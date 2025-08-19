@@ -16,7 +16,7 @@ export class Genre {
       "SELECT * FROM genre WHERE id = $1",
       [id]
     );
-    return result.rows[0] || null;
+    return Genre.mapGenreResult(result)[0] as GenreDto || null;
   }
 
   async getGenresByBookId(bookId: number): Promise<GenreDto[]> {
@@ -24,7 +24,7 @@ export class Genre {
       "SELECT g.* FROM genre g JOIN genre_book bg ON g.id = bg.genre_id WHERE bg.book_id = $1",
       [bookId]
     );
-    return result.rows;
+    return Genre.mapGenreResult(result);
   }
 
   async getGenreByName(name: string): Promise<GenreDto | null> {
@@ -32,7 +32,7 @@ export class Genre {
       "SELECT * FROM genre WHERE name = $1",
       [name]
     );
-    return result.rows[0] || null;
+    return Genre.mapGenreResult(result)[0] as GenreDto || null;
   }
 
   async getAllGenres(): Promise<GenreDto[]> {
@@ -52,7 +52,7 @@ export class Genre {
       "INSERT INTO genre (name) VALUES ($1) RETURNING *",
       [genre.name]
     );
-    return Genre.mapGenreResult(result)[0];
+    return Genre.mapGenreResult(result)[0] as GenreDto;
   }
 
   public async addGenreToBook(genreId: number, bookId: number): Promise<void> {

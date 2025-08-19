@@ -44,6 +44,7 @@ export class Author {
     }
 
     public async addAuthorToBook(authorId: number, bookId: number): Promise<void> {
+        console.log(`Adding author with ID ${authorId} to book with ID ${bookId}`);
         await this.pool.query(
             'INSERT INTO author_book (author_id, book_id) VALUES ($1, $2)',
             [authorId, bookId]
