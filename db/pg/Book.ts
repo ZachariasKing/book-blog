@@ -70,6 +70,7 @@ export class Book {
         b.title, 
         b.publication_date, 
         b.isbn,
+        b.feedback,
         a.id AS author_id, 
         a.name
      FROM book b
@@ -87,6 +88,7 @@ export class Book {
         title: row.title,
         publicationDate: row.publication_date,
         ISBN: row.isbn,
+        feedback: row.feedback,
         authors: []
       });
     }
@@ -114,7 +116,8 @@ public async deleteBookById(id: number): Promise<void> {
       bookId: r.book_id,
       title: r.title,
       publicationDate: r.publication_date,
-      ISBN: r.isbn
+      ISBN: r.isbn,
+      feedback: r.feedback
     }));
 
 

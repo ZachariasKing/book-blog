@@ -1,4 +1,4 @@
-<p>Welcome to the Book Blog!</p>
+<p class="welcome-message">Welcome to the Book Blog!</p>
 <% if (books && books.length > 0) { %>
     <ul class="book-list">
         <% books.forEach(book => { %>
@@ -8,6 +8,7 @@
                     <p class="book-authors">Author(s): <%= book.authors.map(author => author.name).join(', ') %></p>
                     <p class="book-publication-date">Publication Date: <%= book.publicationDate.toDateString() %></p>
                     <p class="book-isbn">ISBN: <%= book.ISBN %></p>
+                    <p class="book-feedback">My Thoughts: <br/><br/> <%= book.feedback %></p>
                 </div>
                 <img class="book-cover-img" src="<%= `https://covers.openlibrary.org/b/isbn/${book.ISBN}-M.jpg` %>" alt="<%= book.title %>">
             </li>

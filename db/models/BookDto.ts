@@ -8,6 +8,7 @@ export type BookDto = {
   title: string;
   publicationDate: Date;
   ISBN: string;
+  feedback: string;
   authors?: AuthorDto[];
   genres?: GenreDto[];
   publisher?: PublisherDto;

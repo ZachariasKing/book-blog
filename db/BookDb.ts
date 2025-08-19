@@ -1,8 +1,8 @@
 import { BookDto } from './models/BookDto';
  
 export interface BookDb {
-//   // external interface
-//   findBookByYearAndAuthorName(year: number, authorName: string): Promise<BookDto[]>;
+  // external interface
+//  findBookByYearAndAuthorName(year: number, authorName: string): Promise<BookDto[]>;
 
 //   updateTitleByIds(title: string, ids: number[]): Promise<number>;
 

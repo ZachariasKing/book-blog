@@ -192,6 +192,7 @@ input:checked + .slider:before {
 .book-list {
   list-style: none;
   padding: 0;
+  margin: 0px 20px 0px 20px;
 }
 
 .book-list li {
@@ -215,9 +216,11 @@ input:checked + .slider:before {
 .book-title,
 .book-authors,
 .book-publication-date,
-.book-isbn {
+.book-isbn,
+.book-feedback {
     display: block;
     margin-bottom: 4px;
+    word-spacing: 4px;
 }
 
 .book-list li:hover {
@@ -229,6 +232,12 @@ input:checked + .slider:before {
   margin-left: 24px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-message {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 20px 0;
 }
 
 
