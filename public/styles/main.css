@@ -227,9 +227,9 @@ input:checked + .slider:before {
   box-shadow: 0 4px 12px var(--primary-rgba-light);
 }
 .book-cover-img {
-  max-width: 180px;
-  max-height: 250px;
-  margin-left: 24px;
+  width: 180px;
+  height: 250px;
+  margin-left: 10px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
@@ -240,6 +240,40 @@ input:checked + .slider:before {
   margin: 20px 0;
 }
 
+/*********** Modal Styling ************/
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-content {
+  background: var(--card-bg); padding: 2rem; border-radius: 8px; position: relative;
+}
+.close {
+  position: absolute; top: 10px; right: 20px; font-size: 2rem; cursor: pointer;
+}
+
+#open-modal-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 1100;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 28px;
+  font-size: 1.1em;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#open-modal-btn:hover {
+  background-color: var(--highlight);
+}
+
 
 /************* Media Queries *************/
 @media screen and (min-width: 300px) and (max-width: 767px) {
@@ -247,8 +281,13 @@ input:checked + .slider:before {
     height: 100%;
   }
 
+
   .container .navbar {
     flex-direction: column;
+  }
+
+  .li-book-item {
+    flex-wrap: wrap-reverse;
   }
   
 }

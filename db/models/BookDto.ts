@@ -4,7 +4,7 @@ import { PublisherDto } from "./PublisherDto";
 
 export type BookDto = {
   // data contract
-  bookId: number;
+  bookId?: number;
   title: string;
   publicationDate: Date;
   ISBN: string;

@@ -1,5 +1,5 @@
 export type GenreDto = {
   // data contract
-  genreId: number;
+  genreId?: number;
   name: string;
 };

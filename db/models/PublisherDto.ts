@@ -1,5 +1,5 @@
 export type PublisherDto = {
   // data contract
-  publisherId: number;
+  publisherId?: number;
   name: string;
 };

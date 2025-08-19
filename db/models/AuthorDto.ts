@@ -1,6 +1,6 @@
 export type AuthorDto = {
   // data contract
-  authorId: number;
+  authorId?: number;
   name: string;
   penName: string;
   statusId: number;

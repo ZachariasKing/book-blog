@@ -16,3 +16,17 @@ themeToggle.addEventListener('click', () => {
 if (localStorage.getItem('theme') === 'dark') {
   document.documentElement.classList.add('dark-theme');
 }
+
+
+/********Modal functionality **********/
+const modal = document.getElementById('add-book-modal');
+const modalClose = document.getElementById('close-modal-btn');
+const openModalBtn = document.getElementById('open-modal-btn');
+
+openModalBtn.addEventListener('click', () => {
+  modal.style.display = 'flex';
+});
+
+modalClose.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
