@@ -144,7 +144,8 @@ export class Book {
 // Method to update the title of books by their IDs
 public async deleteBookById(id: number): Promise<void> {
   try {
-    await this.pool.query('DELETE FROM books WHERE book_id = $1', [id]);
+    console.log('Deleting book with ID:', id);
+    await this.pool.query('DELETE FROM book WHERE id = $1', [id]);
   } catch (error) {
     console.error('Error deleting book:', error);
     throw error;
@@ -153,7 +154,7 @@ public async deleteBookById(id: number): Promise<void> {
 
 public async checkBookTitleExists(bookTitle: string): Promise<boolean> {
   try {
-    const res = await this.pool.query('SELECT 1 FROM books WHERE title = $1', [bookTitle]);
+    const res = await this.pool.query('SELECT 1 FROM book WHERE title = $1', [bookTitle]);
     return res.rows.length > 0;
   } catch (error) {
     console.error('Error checking if book exists:', error);

@@ -108,6 +108,24 @@ app.post('/books', async (req, res) => {
   }
 });
 
+app.delete('/books/:id', async (req, res) => {
+  const bookId = req.params.id;
+  console.log(`Received request to delete book with ID: ${bookId}`);
+  try {
+    //Remove junction table entries to avoid FK constraint error (publisher_book, genre_book, author_book)
+    await publisher.removePublishersFromBook(bookId);
+    await genre.removeGenresFromBook(bookId);
+    await author.removeAuthorsFromBook(bookId);
+    await book.deleteBookById(bookId);
+    
+    console.log(`Book with ID ${bookId} deleted successfully`);
+    res.status(204).send();
+  } catch (error) {
+    console.error(`Error deleting book with ID ${bookId}:`, error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

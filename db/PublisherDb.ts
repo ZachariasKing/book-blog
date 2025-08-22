@@ -8,4 +8,5 @@ export interface PublisherDb {
     addPublisher(publisher: PublisherDto): Promise<PublisherDto>;
     addPublisherToBook(publisherId: number, bookId: number): Promise<void>;
     deletePublisherById(id: number): Promise<void>;
+    removePublishersFromBook(bookId: number): Promise<void>;
 }

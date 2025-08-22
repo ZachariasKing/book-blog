@@ -9,5 +9,6 @@ export interface GenreDb {
     addGenre(genre: GenreDto): Promise<GenreDto>;
     addGenreToBook(genreId: number, bookId: number): Promise<void>;
     deleteGenreById(id: number): Promise<void>;
+    removeGenresFromBook(bookId: number): Promise<void>;
 
 }

@@ -55,6 +55,13 @@ export class Author {
         await this.pool.query('DELETE FROM author WHERE id = $1', [id]);
     }
 
+    async removeAuthorsFromBook(bookId: number): Promise<void> {
+        await this.pool.query(
+            "DELETE FROM author_book WHERE book_id = $1",
+            [bookId]
+        );
+    }
+
       private static mapAuthorResult = (
         res: QueryResult): AuthorDto[] => // projection
         res.rows.map((r) => ({

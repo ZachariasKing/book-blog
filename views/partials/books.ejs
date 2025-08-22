@@ -26,6 +26,13 @@
       src="<%= `https://covers.openlibrary.org/b/isbn/${book.ISBN}-M.jpg` %>"
       alt="<%= book.title %>"
     />
+    <div class="book-actions">
+      <button class="edit-book-btn" data-book-id="<%= book.bookId %>">Edit</button>
+      <button class="delete-book-btn" data-book-id="<%= book.bookId %>">Delete</button>
+    </div>
+    <script>
+
+    </script>
   </li>
   <% }) %>
 </ul>

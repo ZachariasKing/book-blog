@@ -66,6 +66,13 @@ export class Genre {
     await this.pool.query("DELETE FROM genre WHERE id = $1", [id]);
   }
 
+  async removeGenresFromBook(bookId: number): Promise<void> {
+    await this.pool.query(
+      "DELETE FROM genre_book WHERE book_id = $1",
+      [bookId]
+    );
+  }
+
   private static mapGenreResult = (
     res: QueryResult
   ): GenreDto[] => // projection

@@ -7,4 +7,5 @@ export interface AuthorDb {
   addAuthor(author: AuthorDto): Promise<AuthorDto>;
   addAuthorToBook(authorId: number, bookId: number): Promise<void>;
   deleteAuthorById(id: number): Promise<void>;
+  removeAuthorsFromBook(bookId: number): Promise<void>;
 }

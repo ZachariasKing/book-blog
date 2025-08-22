@@ -59,6 +59,13 @@ export class Publisher {
     await this.pool.query("DELETE FROM publisher WHERE id = $1", [id]);
   }
 
+  async removePublishersFromBook(bookId: number): Promise<void> {
+    await this.pool.query(
+      "DELETE FROM publisher_book WHERE book_id = $1",
+      [bookId]
+    );
+  }
+
   async getPublishersByBookId(bookId: number): Promise<PublisherDto[]> {
     const result: QueryResult<PublisherDto> = await this.pool.query(
       "SELECT p.* FROM publisher p JOIN publisher_book bp ON p.id = bp.publisher_id WHERE bp.book_id = $1",
